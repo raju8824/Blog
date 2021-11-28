@@ -1,0 +1,45 @@
+{% extends 'myblog/base.html' %}
+{% block title %} MyBlog {% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="owl-carousel">
+            {% for cats in billi %}
+                <div class="card" style="margin-left:10px;">
+                    <div class="container">
+                        <img class="responsive-img" src="/media/{{cats.image}}" alt="">
+
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            {{cats.title}}
+                        </div>
+                        <p class="truncate">{{cats.descriptions}}</p>
+                        <div class="container center-align m20">
+                            <a href="/category/{{cats.url}}" class="btn bg-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                {% for p in post %}
+                    <dvi class="row">
+                        <div class="col s12 m8">
+                            {{p.content | truncatewords:150 | safe}}
+                            <div style = "margin-top:20px;" >
+                                <a href="/post/{{p.url}}" class='btn bg-primary'>Read More</a>
+                            </div>
+                        </div>
+                        <div class="col s12 m4">
+                            <img class="responsive-img" style="margin-top:50px;" src="/media/{{p.image}}" alt="">
+                        </div>
+                    </dvi>
+                {% endfor %}     
+            </div>
+        </div>
+    </div>
+{% endblock %}
