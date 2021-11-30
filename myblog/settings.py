@@ -118,6 +118,12 @@ USE_L10N = True
 USE_TZ = True
 
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
